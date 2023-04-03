@@ -7,8 +7,8 @@ import { ObjectType, assertExists } from '../utils';
 
 @Component({
   selector: 'quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss'],
+  templateUrl: './quiz-page.component.html',
+  styleUrls: ['./quiz-page.component.scss'],
 })
 export class QuizPageComponent implements OnInit {
   quiz: Quiz;
@@ -23,9 +23,9 @@ export class QuizPageComponent implements OnInit {
     private route: ActivatedRoute,
     private menuService: MenuService
   ) {
-    let courseId = assertExists(this.route.snapshot.queryParams['courseId'], 'courseId is not set');
-    let quizId = assertExists(this.route.snapshot.queryParams['quizId'], 'quizId is not set');
-    this.quiz = assertExists(this.sourceService.getQuiz(courseId, quizId), 'quiz is not set');
+    let courseId = assertExists(this.route.snapshot.queryParams['courseId'], 'course id is not set');
+    let quizId = assertExists(this.route.snapshot.queryParams['quizId'], 'quiz id is not set');
+    this.quiz = assertExists(this.sourceService.getQuiz(courseId, quizId), 'quizId does not exist in course with courseId'); 
     this.shuffleQuestions();
     this.menuService.closeMenu();
   }
@@ -46,7 +46,7 @@ export class QuizPageComponent implements OnInit {
     this.isAutoReply = value;
   }
 
-  selectOption({ value }:ObjectType<string>): void {
+  selectOption({value}: ObjectType<string> ): void {
     this.answers[this.currentQuestionIndex] = value;
     this.selectedOptionValue = value;
     if (this.isAutoReply) this.submitAnswer();
