@@ -1,6 +1,5 @@
 import { Injectable, assertPlatform } from '@angular/core';
-import * as assert from 'assert';
-import { castExists } from '../utils';
+import { assert, castExists } from '../utils';
 
 interface pattern {
   [key: string]: string;

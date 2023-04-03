@@ -9,7 +9,7 @@ import { MatSelectionList, MatSelectionListChange } from '@angular/material/list
 import { IndexLetterPipe } from '../pipes/index-letter.pipe';
 import { Question } from '../services/interfaces';
 import { VoiceService } from '../services/voice.service';
-import * as assert from 'assert';
+import { assert } from '../utils';
 
 @Component({
   selector: 'question',

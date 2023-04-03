@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { SourceService } from '../services/source.service';
 import { ScoreService } from '../services/score.service';
 import { VoiceService } from '../services/voice.service';
-import * as assert from 'assert';
 import { QuizResult, Quiz } from '../services/interfaces';
-import { castExists } from '../utils';
+import { assert, castExists } from '../utils';
 import { Question } from '../services/interfaces';
 
 
@@ -34,7 +33,7 @@ export class QuizResultPageComponent {
     private voiceOverService: VoiceService,
     public scoreService: ScoreService
   ) {
-    const {quiz, answers} = castExists(this.sourceService.getResult(), 'result is not set');
+    const {quiz, answers} = castExists(this.sourceService.getResult(), 'result is not set')!;
     this.quiz = quiz;
     this.answers = answers;
     this.total = quiz.questionsList.length;

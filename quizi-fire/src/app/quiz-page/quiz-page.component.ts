@@ -11,7 +11,7 @@ import { ObjectType, castExists } from '../utils';
   styleUrls: ['./quiz-page.component.scss'],
 })
 export class QuizPageComponent implements OnInit {
-  quiz: Quiz;
+  quiz!: Quiz;
   answers: string[] = [];
   currentQuestionIndex = 0;
   selectedOptionValue: string|null = null;
@@ -25,7 +25,7 @@ export class QuizPageComponent implements OnInit {
   ) {
     let courseId = castExists(this.route.snapshot.queryParams['courseId'], 'course id is not set');
     let quizId = castExists(this.route.snapshot.queryParams['quizId'], 'quiz id is not set');
-    this.quiz = castExists(this.sourceService.getQuiz(courseId, quizId), 'quizId does not exist in course with courseId'); 
+    this.quiz = castExists(this.sourceService.getQuiz(courseId, quizId), 'quizId does not exist in course with courseId')!; 
     this.shuffleQuestions();
     this.menuService.closeMenu();
   }
