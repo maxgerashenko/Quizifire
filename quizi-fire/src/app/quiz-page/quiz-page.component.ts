@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from '../services/interfaces';
 import { MenuService } from '../services/menu.service';
 import { SourceService } from '../services/source.service';
-import { ObjectType, assertExists } from '../utils';
+import { ObjectType, castExists } from '../utils';
 
 @Component({
   selector: 'quiz',
@@ -23,9 +23,9 @@ export class QuizPageComponent implements OnInit {
     private route: ActivatedRoute,
     private menuService: MenuService
   ) {
-    let courseId = assertExists(this.route.snapshot.queryParams['courseId'], 'course id is not set');
-    let quizId = assertExists(this.route.snapshot.queryParams['quizId'], 'quiz id is not set');
-    this.quiz = assertExists(this.sourceService.getQuiz(courseId, quizId), 'quizId does not exist in course with courseId'); 
+    let courseId = castExists(this.route.snapshot.queryParams['courseId'], 'course id is not set');
+    let quizId = castExists(this.route.snapshot.queryParams['quizId'], 'quiz id is not set');
+    this.quiz = castExists(this.sourceService.getQuiz(courseId, quizId), 'quizId does not exist in course with courseId'); 
     this.shuffleQuestions();
     this.menuService.closeMenu();
   }
