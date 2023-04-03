@@ -6,6 +6,8 @@ import { AppModule } from './root/app.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuizResultsModule } from './quiz-result-page/quiz-result.module';
 import { QuizModule } from './quiz-page/quiz.module';
+import { QuizListModule } from './quiz-list-page/quiz-list.module';
+import { StartPageModule } from './start-page/start-page.module';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { QuizModule } from './quiz-page/quiz.module';
     QuizResultsModule,
     AppModule,
     QuizModule,
+    QuizListModule,
+    StartPageModule,
   ],
   bootstrap: [AppComponent], // importatnt for bootstrap
 })

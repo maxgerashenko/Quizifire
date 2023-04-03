@@ -1,6 +1,6 @@
 import { Injectable, assertPlatform } from '@angular/core';
 import * as assert from 'assert';
-import { assertExists } from '../utils';
+import { castExists } from '../utils';
 
 interface pattern {
   [key: string]: string;
@@ -17,7 +17,7 @@ export class VoiceService {
   };
 
   constructor() {
-    this.speech = assertExists<SpeechSynthesisUtterance>(new SpeechSynthesisUtterance(), 'No speechSynthesis found');
+    this.speech = castExists<SpeechSynthesisUtterance>(new SpeechSynthesisUtterance(), 'No speechSynthesis found');
     this.initVoice();
   }
 
