@@ -10,7 +10,7 @@ import { MenuService } from '../services/menu.service';
 
 @Component({
   templateUrl: './quiz-list-page.component.html',
-  styleUrls: ['./quiz-list-page.component.css'],
+  styleUrls: ['./quiz-list-page.component.scss'],
 })
 export class QuizListPageComponent {
   course?: Course

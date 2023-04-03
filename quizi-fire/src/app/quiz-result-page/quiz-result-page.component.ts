@@ -9,10 +9,9 @@ import { castExists } from '../utils';
 import { Question } from '../services/interfaces';
 
 
- export type sortedQuestion = Question & { selected: string };
+export type sortedQuestion = Question & { selected: string };
 
 @Component({
-  selector: 'quiz-results',
   templateUrl: './quiz-result-page.component.html',
   styleUrls: ['./quiz-result-page.component.scss'],
 })

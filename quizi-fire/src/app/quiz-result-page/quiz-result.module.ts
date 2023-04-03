@@ -17,5 +17,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   declarations: [
     QuizResultPageComponent,
   ],
+  exports: [QuizResultPageComponent],
 })
 export class QuizResultsModule {}
