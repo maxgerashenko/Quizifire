@@ -1,0 +1,85 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@include mat.core();
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$purple-palette),
+      accent: mat.define-palette(mat.$pink-palette, 400),
+      warn: mat.define-palette(mat.$gray-palette, 700),
+    ),
+    typography: mat.define-typography-config(),
+    density: -3,
+  )
+);
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$deep-purple-palette),
+      accent: mat.define-palette(mat.$pink-palette),
+      warn: mat.define-palette(mat.$gray-palette, 200),
+      density: 0,
+    ),
+  )
+);
+
+// Dark-theme
+@include mat.core-theme($dark-theme);
+@include mat.button-theme($dark-theme);
+@include mat.card-theme($dark-theme);
+@include mat.progress-bar-theme($dark-theme);
+@include mat.list-theme($dark-theme);
+@include mat.slide-toggle-theme($dark-theme);
+@include mat.form-field-theme($dark-theme);
+
+@include custom.theme($dark-theme);
+
+// Light-theme
+@media (prefers-color-scheme: light) {
+  @include mat.core-color($light-theme);
+  @include mat.button-color($light-theme);
+  @include mat.card-color($light-theme);
+  @include mat.progress-bar-color($light-theme);
+  @include mat.list-color($light-theme);
+  @include mat.slide-toggle-color($light-theme);
+  @include mat.form-field-color($light-theme);
+
+  @include custom.color($light-theme);
+}
+
+@media (prefers-color-scheme: light) {
+    .mat-app-background {
+      background-color: #5c5c5c26;
+    }
+  
+    .mat-form-field-disabled textarea.mat-mdc-input-element {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+  }
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, 'primary');
+  $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
+  $is-dark-theme: map.get($color-config, 'is-dark');
+
+  mat-list-item.correct {
+    background-color: mat.get-color-from-palette($warn-palette);
+  }
+  mat-list-item.incorrect {
+    background-color: mat.get-color-from-palette($accent-palette);
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}
+
