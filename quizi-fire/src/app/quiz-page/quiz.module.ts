@@ -7,11 +7,13 @@ import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   imports: [CommonModule,
     PipesModule,
+    MatButtonModule,
     MatListModule,
     MatCardModule,
     MatProgressBarModule,
