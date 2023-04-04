@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { PipesModule } from '../pipes/pipes.module';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -15,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
     PipesModule,
     MatListModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
   declarations: [QuizListPageComponent],
   exports: [],
