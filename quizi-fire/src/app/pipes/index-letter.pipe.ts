@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'indexLetter'
+  name: 'indexLetter',
 })
 export class IndexLetterPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: number): string {
+    return String.fromCharCode(value + 97);
   }
-
 }

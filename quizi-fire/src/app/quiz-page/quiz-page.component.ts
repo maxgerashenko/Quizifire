@@ -4,6 +4,7 @@ import { Quiz } from '../services/interfaces';
 import { MenuService } from '../services/menu.service';
 import { SourceService } from '../services/source.service';
 import { ObjectType, castExists } from '../utils';
+import { ScoreService } from '../services/score.service';
 
 @Component({
   selector: 'quiz',
@@ -19,6 +20,7 @@ export class QuizPageComponent implements OnInit {
 
   constructor(
     private readonly sourceService: SourceService,
+    private readonly scoreService: ScoreService,
     private router: Router,
     private route: ActivatedRoute,
     private menuService: MenuService
@@ -66,7 +68,7 @@ export class QuizPageComponent implements OnInit {
   submitAnswer(): void {
     this.currentQuestionIndex++;
     if (this.currentQuestionIndex === this.quiz.questionsList.length) {
-      this.sourceService.setResult({
+      this.scoreService.setResult({
         quiz: this.quiz,
         answers: this.answers,
       });

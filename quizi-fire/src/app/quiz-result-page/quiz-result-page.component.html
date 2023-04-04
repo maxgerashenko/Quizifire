@@ -45,7 +45,6 @@
       <ng-container
         *ngFor="
           let question of quiz.questionsList | correctFirst: answers:true;
-          trackBy: trackQuestion;
           let questionIndex = index
         "
       >
@@ -56,19 +55,20 @@
           *ngFor="let option of question.optionsList; let optionIndex = index"
         >
           <mat-list-item
-            *ngIf="isRelevant(question, optionIndex | alphabetLetter)"
+            *ngIf="isRelevant(question, optionIndex | indexLetter)"
             [ngClass]="{
-              correct: isCorrect(question, optionIndex | alphabetLetter),
-              incorrect: isInCorrect(question, optionIndex | alphabetLetter)
+              correct: isCorrect(question, optionIndex | indexLetter),
+              incorrect: isInCorrect(question, optionIndex | indexLetter)
             }"
           >
             <label> {{ option }} </label>
           </mat-list-item>
         </ng-container>
         <mat-form-field
-          appearance="fill"
+          appearance="outline"
           *ngIf="question.description && question.answer !== question.selected"
           class="description"
+          floatLabel="true"
         >
           <mat-label>Explanation</mat-label>
           <textarea #description matInput disabled="true">

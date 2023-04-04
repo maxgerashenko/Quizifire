@@ -1,6 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import { SourceService } from '../services/source.service';
 import { ScoreService } from '../services/score.service';
 import { VoiceService } from '../services/voice.service';
 import { QuizResult, Quiz } from '../services/interfaces';
@@ -29,11 +28,10 @@ export class QuizResultPageComponent {
 
   constructor(
     private router: Router,
-    private sourceService: SourceService,
     private voiceOverService: VoiceService,
-    public scoreService: ScoreService
+    public scoreService: ScoreService,
   ) {
-    const {quiz, answers} = castExists(this.sourceService.getResult(), 'result is not set')!;
+    const {quiz, answers} = castExists(this.scoreService.getResult(), 'result is not set')!;
     this.quiz = quiz;
     this.answers = answers;
     this.total = quiz.questionsList.length;
@@ -55,8 +53,8 @@ export class QuizResultPageComponent {
     assert(this.descriptions, 'descriptions is not on the page');
   }
 
-  trackQuestion(index: number, quiz: Question) {
-    return quiz?.title;
+  trackQuestion(index: number, question: Question) {
+    return question?.title;
   }
 
   isTopScore() {
@@ -89,7 +87,7 @@ export class QuizResultPageComponent {
   }
 
   goToList() {
-    this.router.navigate(['/course'], {
+    this.router.navigate(['/start'], {
       queryParams: { id: this.quiz.courseId },
     });
   }

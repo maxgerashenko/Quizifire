@@ -7,7 +7,6 @@ import { TMP_COURSES_LIST } from './tmp';
 
 @Injectable({ providedIn: 'root' })
 export class SourceService {
-  result?: QuizResult;
   coursesList = TMP_COURSES_LIST;
 
   constructor() {}
@@ -33,13 +32,5 @@ export class SourceService {
 
   getCourse(id: string): Course {
     return this.coursesList.find((course) => course.id === id)!;
-  }
-
-  getResult(): QuizResult|undefined {
-    return this.result;
-  }
-
-  setResult(value: QuizResult) {
-    this.result = { ...value };
   }
 }
